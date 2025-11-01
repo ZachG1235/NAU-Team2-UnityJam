@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprint_multiplier = 1.5f;
     public float crouch_multiplier = 0.5f;
     public float mouseSensitivity = 100f;
+    
 
     public bool is_running = false;
     public bool is_crouching = false;
