@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerCamera;
     public float standing_camera_height = 0.6f;
     public float crouched_camera_height = 0.35f;
-    public float camera_change_rate = 0.5f;
+    public float camera_change_rate = 1f;
 
 
     float verticalRotation = 0f;
@@ -87,13 +87,13 @@ public class PlayerMovement : MonoBehaviour
         if (is_crouching && (playerCamera.transform.localPosition.y > crouched_camera_height))
         {
             // move camera to crouched y position
-            
-            playerCamera.transform.localPosition += Vector3.down * camera_change_rate;
+
+            playerCamera.transform.localPosition += Vector3.down * camera_change_rate * Time.deltaTime;
         }
         else if (!is_crouching && (playerCamera.transform.localPosition.y < standing_camera_height))
         {
             // move camera to standing y position
-            playerCamera.transform.localPosition += Vector3.up * camera_change_rate;
+            playerCamera.transform.localPosition += Vector3.up * camera_change_rate * Time.deltaTime;
         }
     }
 
