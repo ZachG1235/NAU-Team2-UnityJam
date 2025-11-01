@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Camera")]
     public Transform playerCamera;
+    public float standing_camera_height = 0.6f;
+    public float crouched_camera_height = 0.35f;
+    public float camera_change_rate = 0.5f;
+
 
     float verticalRotation = 0f;
     CharacterController controller;
@@ -31,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
         GetPlayerStatus();
         MovePlayer();
         LookAround();
-        Debug.Log("Is running = " + is_running + " is crouch = " + is_crouching);
+        TransitionCamera();
+        // Debug.Log("Is running = " + is_running + " is crouch = " + is_crouching);
     }
 
     void MovePlayer()
@@ -74,6 +79,21 @@ public class PlayerMovement : MonoBehaviour
         if (is_running && is_crouching)
         {
             is_running = false;
+        }
+    }
+
+    void TransitionCamera()
+    {
+        if (is_crouching && (playerCamera.transform.localPosition.y > crouched_camera_height))
+        {
+            // move camera to crouched y position
+            
+            playerCamera.transform.localPosition += Vector3.down * camera_change_rate;
+        }
+        else if (!is_crouching && (playerCamera.transform.localPosition.y < standing_camera_height))
+        {
+            // move camera to standing y position
+            playerCamera.transform.localPosition += Vector3.up * camera_change_rate;
         }
     }
 
