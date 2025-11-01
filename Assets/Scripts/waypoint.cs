@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class empty : MonoBehaviour
+public class waypoint : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,6 +11,14 @@ public class empty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ex"))
+        {
+            other.GetComponent<ExMovement>().StartCoroutine("Idle");
+        }
     }
 }
