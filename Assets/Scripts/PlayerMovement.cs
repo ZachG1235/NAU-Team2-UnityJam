@@ -15,9 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Camera")]
     public Transform playerCamera;
-    public float standing_camera_height = 0.6f;
-    public float crouched_camera_height = 0.35f;
-    public float camera_change_rate = 1f;
 
 
     float verticalRotation = 0f;
