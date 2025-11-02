@@ -1,44 +1,41 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using TMPro;
+
 
 public class CutsceneText : MonoBehaviour
 {
-    public List<string> text = new List<string>();
-    public TextMeshProUGUI textBox;
+    public List<string> textLines = new List<string>();  // list of dialogue lines
+    public TextMeshProUGUI textBox;                     // assign in Inspector
     public float typingSpeed = 0.05f;
     public float initialDelay = 1f;
-    public float ending_seconds_wait_time = 5f;
+    public float delayBetweenLines = 1f;               // wait before next line
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        StartCoroutine(TypeText(text[0]));
+        if (textLines.Count > 0)
+            StartCoroutine(PlayCutscene());
     }
 
-    IEnumerator TypeText(string text)
+    private IEnumerator PlayCutscene()
     {
         yield return new WaitForSeconds(initialDelay);
-        textBox.text = ""; // start empty
 
-        foreach (char letter in text.ToCharArray())
+        foreach (string line in textLines)
         {
-            textBox.text += letter; // add one letter
-            yield return new WaitForSeconds(typingSpeed); // wait
+            yield return StartCoroutine(TypeLine(line));
+            yield return new WaitForSeconds(delayBetweenLines);
         }
-
-        yield return new WaitForSeconds(ending_seconds_wait_time);
-        FinishCutscene();
     }
 
-    public void FinishCutscene()
+    private IEnumerator TypeLine(string line)
     {
-        SceneManager.LoadScene("Level");
+        textBox.text = "";
+        foreach (char letter in line)
+        {
+            textBox.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
     }
-
-
-
-    
 }
