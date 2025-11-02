@@ -18,6 +18,9 @@ public class CutsceneText : MonoBehaviour
     void Start()
     {
         StartCoroutine(DisplayText());
+        // Make cursor visible
+        Cursor.visible = true;                    
+        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator DisplayText()
