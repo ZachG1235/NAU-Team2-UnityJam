@@ -8,7 +8,7 @@ using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
 public class Sound : MonoBehaviour {
     public PlayerMovement PlayerMovement;
     public AudioSource walking;
-    public AudioSource heartBeat;
+    // public AudioSource heartBeat;
     public float radius = 1f;
     public float pitch = 0.5f;
     public float currentR;
@@ -62,11 +62,11 @@ public class Sound : MonoBehaviour {
 
         if (!nearEnemy && hasEnemy) {
             nearEnemy = true;
-            heartBeat.Play();
+            // heartBeat.Play();
             enemy.navAgent.SetDestination(transform.position);
         } else if (nearEnemy && !hasEnemy) {
             nearEnemy = false;
-            heartBeat.Stop();
+            // heartBeat.Stop();
         }
 
     }

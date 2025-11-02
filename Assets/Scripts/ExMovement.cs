@@ -13,6 +13,9 @@ public class ExMovement : MonoBehaviour
     public float walkSpeed = 1f;
     public float chaseSpeed = 1.2f;
     public bool isChasing = false;
+    public GameObject player_seen;
+    private AudioSource seen_audio;
+    private float seen_sound_cooldown = 1f;
 
     [Header("Patrol Waypoints; in sequenctial order")]
     [Tooltip("Place waypoints in scene and assign them here")]
@@ -27,6 +30,7 @@ public class ExMovement : MonoBehaviour
         navAgent.SetDestination(waypoints[0].position);
         waypointCount = waypoints.Count;
         navAgent.speed = walkSpeed;
+        seen_audio = player_seen.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,15 @@ public class ExMovement : MonoBehaviour
             navAgent.speed = chaseSpeed;
             navAgent.SetDestination(fov.playerRef.transform.position);
             animator.Play("Walking_A 0");
+            if (seen_sound_cooldown < 0)
+            {
+                seen_sound_cooldown = 1f;
+                seen_audio.Play();
+            }
+            else if (seen_sound_cooldown < 0.10f)
+            {
+                seen_audio.Stop();
+            }
         }
         // otherwise, assume was chasing but cant see player
         else if (isChasing && navAgent.remainingDistance <= navAgent.stoppingDistance)
@@ -68,6 +81,7 @@ public class ExMovement : MonoBehaviour
             // wait a few seconds and decide next waypoint
             StartCoroutine("WaypointReached");
         }
+        seen_sound_cooldown -= 0.01f;
     }
     
     public IEnumerator WaypointReached()
