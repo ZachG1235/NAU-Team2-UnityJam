@@ -8,6 +8,7 @@ public class HoverObject : MonoBehaviour {
     public GameObject player;
     void Start() {
         hoverManager = FindFirstObjectByType<HoverManager>();
+        player = GameObject.FindWithTag("Player");
         // Finds the UI manager
         //add myself to a list in the hover manager
     }

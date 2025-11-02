@@ -22,7 +22,7 @@ public class countKey : MonoBehaviour
         //Debug.Log("Num of keys: "+ numOfKeys);
         if (numOfKeys == 0) {
             if (touching_player && Input.GetKeyDown(KeyCode.E)) {
-                SceneManager.LoadScene("IntroCutscene");
+                SceneManager.LoadScene("WinCutscene");
             }
         }
     }

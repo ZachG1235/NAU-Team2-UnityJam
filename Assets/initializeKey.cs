@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using TMPro;
 using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
+
 
 public class initializeKey : MonoBehaviour
 {
@@ -12,6 +14,13 @@ public class initializeKey : MonoBehaviour
     private GameObject player;
     private int spotAmount;
     CapsuleCollider capsuleCollider;
+
+    [Header("Text Stuff")]
+    public GameObject canvasObject;
+    public TextMeshProUGUI textBox;
+    public string words;
+    public float textTimer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -54,6 +63,18 @@ public class initializeKey : MonoBehaviour
             spotAmount--;
 
         }
+        StartCoroutine(ItemAppear());
+
         enabled = false;
+
+        
     }
+
+    System.Collections.IEnumerator ItemAppear() {
+        canvasObject.SetActive(true);
+        textBox.text = words;
+        yield return new WaitForSeconds(textTimer);
+        canvasObject.SetActive(false);
+    }
+
 }
