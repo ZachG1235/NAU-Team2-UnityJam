@@ -3,12 +3,12 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class grabLogic : MonoBehaviour
 {
     [SerializeField] private bool touching_player = false;
     public float timer = 100f;
-    public bool timeStart = false;
     public GameObject player;
     public GameObject newModel;
     public GameObject hold;
@@ -17,6 +17,10 @@ public class grabLogic : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameObject canvas;
     public countKey countKey;
+
+    //text stuff
+    public TextMeshProUGUI textBox;
+    public string words;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,9 +62,14 @@ public class grabLogic : MonoBehaviour
         transform.position = teleportAway.transform.position;
 
         newModel.transform.position = hold.transform.position;
+
+        print(textBox);
         playerMovement.enabled = false;
         canvas.SetActive(true);
-        newModel.transform.LookAt(player.transform.position + new Vector3(0f, 0f, 0f));
+        textBox.text = words;
+        
+        Vector3 targetPosition = new Vector3(newModel.transform.position.x, player.transform.position.y, newModel.transform.position.z);
+        player.transform.LookAt(targetPosition);
         countKey.deleteKey();
         yield return new WaitForSeconds(timer);
         playerMovement.enabled = true;
