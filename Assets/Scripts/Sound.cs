@@ -4,12 +4,15 @@ using UnityEngine;
 public class Sound : MonoBehaviour
 {
     public PlayerMovement PlayerMovement;
+    public AudioSource audioSource;
     public float radius = 1f;
+    public float pitch = 0.5f;
     public float currentR;
     public float changeR = 0.1f;
+    public bool moving = false;
+    public bool prevMoving = false;
     //public SphereCollider SphereCollider;
-    void Start() {
-
+    void Start() { 
     }
     // Update is called once per frame
     void Update() {
@@ -22,14 +25,28 @@ public class Sound : MonoBehaviour
             } else {
                 currentR = radius;
             }
-            // the actual change in radius
-/*        if (SphereCollider != null) {
-            SphereCollider.radius = currentR;
-           // Debug.Log(radius);
-        }*/
-        DetectEnemies();
 
-      
+    
+
+        DetectEnemies();
+        float input = Input.GetAxis("Horizontal") + Input.GetAxis("Vertical");
+        Debug.Log(input);
+        if (input != 0) {
+            moving = true;
+        } else {
+            moving = false;
+        }
+
+        if (!prevMoving && moving) {
+            prevMoving = true;
+            audioSource.Play();
+            
+        } else if (!moving && prevMoving) {
+            moving = false;
+            audioSource.Stop();
+        }
+        prevMoving = moving;
+        audioSource.pitch = pitch * currentR / radius;
     }
     void DetectEnemies() {
         Collider[] hits = Physics.OverlapSphere(transform.position, currentR);
