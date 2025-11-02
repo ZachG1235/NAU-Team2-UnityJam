@@ -384,8 +384,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -862,15 +862,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dafdbeebffea5f48a815c69aff4355c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneText
-  text:
-  - I'm here to save you! That alien is chasing me we have to be quick!
-  - 'Partner: Dude, you need help, we have been broken up for 2 years.'
-  - 'Partner: That "alien" is my bf steve, you need to get a grip before you hrut
-    someone.'
+  text: []
   textBox: {fileID: 312975017}
   typingSpeed: 0.05
   initialDelay: 1
   ending_seconds_wait_time: 5
+  lvl: 3
 --- !u!1001 &934263859
 PrefabInstance:
   m_ObjectHideFlags: 0
