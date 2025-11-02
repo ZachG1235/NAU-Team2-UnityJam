@@ -435,6 +435,11 @@ MonoBehaviour:
   isChasing: 0
   waypoints:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!54 &197757595717854051
 Rigidbody:
   m_ObjectHideFlags: 0

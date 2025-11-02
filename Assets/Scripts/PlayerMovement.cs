@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -30,11 +31,13 @@ public class PlayerMovement : MonoBehaviour
 
     float verticalRotation = 0f;
     CharacterController controller;
+    public ExMovement enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+        mouseSensitivity = sensitivity.mouse_sensitivity;
     }
     
     // Update is called once per frame
@@ -135,6 +138,11 @@ public class PlayerMovement : MonoBehaviour
         controller.transform.position = teleport_position;
         transform.rotation = Quaternion.Euler(rotation);
         
+        // check if enemy sees player while trying to hide
+        if (!enemy.fov.canSeePlayer)
+        {
+            enemy.StartCoroutine("WaypointReached");
+        }
     }
 
     public void UnHide()
