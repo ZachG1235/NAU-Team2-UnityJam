@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 public class grabLogic : MonoBehaviour
 {
     [SerializeField] private bool touching_player = false;
-    public float holdOffset = 0.3f;
     public float timer = 100f;
     public bool timeStart = false;
     public GameObject player;
@@ -15,6 +14,9 @@ public class grabLogic : MonoBehaviour
     public GameObject hold;
     public GameObject teleportAway;
     public bool curInterecting = false;
+    public PlayerMovement playerMovement;
+    public GameObject canvas;
+    public countKey countKey;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,10 +58,14 @@ public class grabLogic : MonoBehaviour
         transform.position = teleportAway.transform.position;
 
         newModel.transform.position = hold.transform.position;
+        playerMovement.enabled = false;
+        canvas.SetActive(true);
 
+        countKey.deleteKey();
         yield return new WaitForSeconds(timer);
-
+        playerMovement.enabled = true;
         newModel.transform.position = teleportAway.transform.position;
         curInterecting = false;
+        canvas.SetActive(false);
     }
 }
