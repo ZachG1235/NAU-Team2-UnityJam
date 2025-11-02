@@ -61,12 +61,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!is_hiding)
+        Debug.Log("Unhide Cooldown " + unhide_cooldown);
+        if (is_hiding)
         {
-            if (!(unhide_cooldown < 0 && Input.GetKeyDown(KeyCode.E)))
-            {
-                unhide_cooldown -= 0.01f;
-            }
+            unhide_cooldown -= 0.01f;
         }
     }
 
@@ -130,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Hide(Vector3 teleport_position, Vector3 rotation, GameObject object_reference)
     {
-        unhide_cooldown = 1f;
+        
         // save prior vectors
         previous_location = gameObject.transform.position;
         previous_rotation = gameObject.transform.rotation;
@@ -148,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
         {
             enemy.StartCoroutine("WaypointReached");
         }
+        unhide_cooldown = 1f;
     }
 
     public void UnHide()

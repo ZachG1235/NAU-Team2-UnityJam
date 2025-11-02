@@ -12,7 +12,9 @@ public class MenuScriipt : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        slider.onValueChanged.AddListener(OnSliderValueChanged);
+        if(slider != null){
+            slider.onValueChanged.AddListener(OnSliderValueChanged);
+        }
     }
 
     // Update is called once per frame
@@ -26,6 +28,16 @@ public class MenuScriipt : MonoBehaviour
         print("play");
         //go to the correct scene
         SceneManager.LoadScene("IntroCutscene");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("TitleScreeen");
     }
 
     public void OnSliderValueChanged(float newValue)
