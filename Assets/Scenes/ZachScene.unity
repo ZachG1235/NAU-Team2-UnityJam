@@ -567,6 +567,21 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 5944971108612571151, guid: c32ad136727772247af6c82cb3226d8f,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040611632985474396, guid: c32ad136727772247af6c82cb3226d8f,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040611632985474396, guid: c32ad136727772247af6c82cb3226d8f,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7659285534188447850, guid: c32ad136727772247af6c82cb3226d8f,
         type: 3}
       propertyPath: m_Name
