@@ -10,7 +10,8 @@ public class HoverManager : MonoBehaviour {
     void Update() {
         if (currentObject != null) {
             // Move UI text to follow hovered object
-            hoverText.transform.position = cam.WorldToScreenPoint(currentObject.position + textOffset);
+            //hoverText.transform.position = cam.WorldToScreenPoint(currentObject.position + textOffset);
+            //Debug.Log("text: "+hoverText.transform.position);
         }
     }
 
