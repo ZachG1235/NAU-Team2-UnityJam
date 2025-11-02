@@ -8,7 +8,7 @@ public class grabLogic : MonoBehaviour
 {
     [SerializeField] private bool touching_player = false;
     public float holdOffset = 0.3f;
-    public float timer = 100;
+    public float timer = 100f;
     public bool timeStart = false;
     public GameObject player;
     public GameObject newModel;
@@ -30,8 +30,6 @@ public class grabLogic : MonoBehaviour
                 interact();
             }
         }
-    
-
     }
 
     void OnTriggerEnter(Collider collision) {
@@ -52,16 +50,12 @@ public class grabLogic : MonoBehaviour
     void interact() {
         curInterecting = true;
         StartCoroutine(ItemAppear());
-
-
     }
 
     IEnumerator ItemAppear() {
         transform.position = teleportAway.transform.position;
 
-        
-        newModel.transform.position = hold.transform.localPosition;
-        Debug.Log("pos " + hold.transform.localPosition);
+        newModel.transform.position = hold.transform.position;
 
         yield return new WaitForSeconds(timer);
 
