@@ -53,15 +53,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 UnHide();
             }
-            else
-            {
-                unhide_cooldown -= 0.01f;
-                // Debug.Log(unhide_cooldown);
-            }
         }
         LookAround();
         TransitionCamera();
         // Debug.Log("Is running = " + is_running + " is crouch = " + is_crouching);
+    }
+
+    void FixedUpdate()
+    {
+        if (!is_hiding)
+        {
+            if (!(unhide_cooldown < 0 && Input.GetKeyDown(KeyCode.E)))
+            {
+                unhide_cooldown -= 0.01f;
+            }
+        }
     }
 
     void MovePlayer()

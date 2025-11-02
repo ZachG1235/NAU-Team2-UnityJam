@@ -32,14 +32,16 @@ public class PropHide : MonoBehaviour
                 hide_position -= new Vector3(0f, tub_depth, 0f);
                 player.GetComponent<PlayerMovement>().Hide(hide_position, new Vector3(gameObject.transform.rotation.x, gameObject.transform.rotation.y - y_rotation, gameObject.transform.rotation.z), gameObject);
             }
-        }
+        }    
+    }   
 
+    void FixedUpdate()
+    {
         if (unhide_cooldown > 0)
         {
             unhide_cooldown -= 0.01f;
         }
-    }   
-
+    }
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "Player")
