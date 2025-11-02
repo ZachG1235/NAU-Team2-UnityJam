@@ -1,3 +1,5 @@
+// using System.Diagnostics;
+using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
@@ -15,26 +17,32 @@ public class Sound : MonoBehaviour {
     public bool prevMoving = false;
     public bool nearEnemy = false;
     public bool hasEnemy;
+    private ExMovement enemy;
     //public SphereCollider SphereCollider;
     void Start() {
     }
     // Update is called once per frame
     void Update() {
         // change radius size based on movement
-        if (PlayerMovement.is_running) {
+        if (PlayerMovement.is_running)
+        {
             currentR = radius + changeR;
-        } else if ((PlayerMovement.is_crouching)) {
+        }
+        else if ((PlayerMovement.is_crouching))
+        {
             currentR = radius - changeR;
 
-        } else {
+        }
+        else
+        {
             currentR = radius;
         }
-
+        Debug.Log("Current Radius: " + currentR);
 
 
         DetectEnemies();
         float input = Input.GetAxis("Horizontal") + Input.GetAxis("Vertical");
-        Debug.Log(input);
+
         if (input != 0) {
             moving = true;
         } else {
@@ -55,36 +63,45 @@ public class Sound : MonoBehaviour {
         if (!nearEnemy && hasEnemy) {
             nearEnemy = true;
             heartBeat.Play();
+            enemy.navAgent.SetDestination(transform.position);
         } else if (nearEnemy && !hasEnemy) {
             nearEnemy = false;
             heartBeat.Stop();
         }
 
     }
-    void DetectEnemies() {
+    void DetectEnemies()
+    {
         Collider[] hits = Physics.OverlapSphere(transform.position, currentR);
+
+        foreach (Collider hit in hits)
         {
 
+            if (hit.CompareTag("Enemy"))
+            {
+                Debug.Log("Enemy detected: " + hit.name);
 
-            foreach (Collider hit in hits) {
-
-                if (hit.CompareTag("Enemy")) {
-                    Debug.Log("Enemy detected: " + hit.name);
-
-                    if (!hasEnemy) {
-                        hasEnemy = true;
-                        break;
-
-                    }
+                if (!hasEnemy)
+                {
+                    hasEnemy = true;
+                    enemy = hit.GetComponent<ExMovement>();
+                    break;
                 }
-
-                hasEnemy = false;
-
-
             }
+
+            hasEnemy = false;
+
 
         }
 
+
+
     }
     
+    // Visualize the sphere in the Scene view
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, currentR);
+    }
 }
