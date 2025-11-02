@@ -1766,7 +1766,7 @@ PrefabInstance:
         type: 3}
       propertyPath: words
       value: This is her Journal! "Steve and I are doing so well, I think we might
-        get married!" Who is steve? My name isn't steve?
+        get married!"  Who is Steve? My name isn't Steve?
       objectReference: {fileID: 0}
     - target: {fileID: 6032601439775241896, guid: 7686f723260bc434d80896539bc54e20,
         type: 3}
@@ -6861,7 +6861,7 @@ MonoBehaviour:
   lvl: -1
   text_bloop_sfx: {fileID: 218153024}
   introText: She must be locked up behind a door somewhere. I need to avoid that
-    alien. I can probably hide under the furniture.
+    alien. I might be able to hide under the furniture...
   introTextBox: {fileID: 26674440}
   isTyping: 0
 --- !u!4 &218153026
@@ -25318,12 +25318,12 @@ PrefabInstance:
     - target: {fileID: 6032601439775241896, guid: 7686f723260bc434d80896539bc54e20,
         type: 3}
       propertyPath: timer
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6032601439775241896, guid: 7686f723260bc434d80896539bc54e20,
         type: 3}
       propertyPath: words
-      value: This is her phone! Oh look she just sent a text, "He won't leave me
+      value: This is her phone! Oh look, she just sent a text. "He won't leave me
         alone, its been 2 years." Who could she be talking about?
       objectReference: {fileID: 0}
     - target: {fileID: 6032601439775241896, guid: 7686f723260bc434d80896539bc54e20,
@@ -39447,7 +39447,7 @@ PrefabInstance:
     - target: {fileID: 6032601439775241896, guid: 7686f723260bc434d80896539bc54e20,
         type: 3}
       propertyPath: words
-      value: Its a picture of her and someone... I wonder who that is?
+      value: It's a picture of her and someone... I wonder who that is?
       objectReference: {fileID: 0}
     - target: {fileID: 6032601439775241896, guid: 7686f723260bc434d80896539bc54e20,
         type: 3}
