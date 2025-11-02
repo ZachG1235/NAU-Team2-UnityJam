@@ -33,6 +33,7 @@ public class PropHide : MonoBehaviour
                 player.GetComponent<PlayerMovement>().Hide(hide_position, new Vector3(gameObject.transform.rotation.x, gameObject.transform.rotation.y - y_rotation, gameObject.transform.rotation.z), gameObject);
             }
         }    
+        
     }   
 
     void FixedUpdate()
@@ -50,7 +51,6 @@ public class PropHide : MonoBehaviour
         }
         if (collision.gameObject.name == "PlayerCapsule")
         {
-            
             touching_player = true;
         }
     }
