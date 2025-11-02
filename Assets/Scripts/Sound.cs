@@ -1,32 +1,36 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
 
 
-public class Sound : MonoBehaviour
-{
+public class Sound : MonoBehaviour {
     public PlayerMovement PlayerMovement;
-    public AudioSource audioSource;
+    public AudioSource walking;
+    public AudioSource heartBeat;
     public float radius = 1f;
     public float pitch = 0.5f;
     public float currentR;
     public float changeR = 0.1f;
     public bool moving = false;
     public bool prevMoving = false;
+    public bool nearEnemy = false;
+    public bool hasEnemy;
     //public SphereCollider SphereCollider;
-    void Start() { 
+    void Start() {
     }
     // Update is called once per frame
     void Update() {
         // change radius size based on movement
-            if (PlayerMovement.is_running) {
-                currentR = radius + changeR;
-            } else if ((PlayerMovement.is_crouching)) {
-                currentR = radius - changeR;
+        if (PlayerMovement.is_running) {
+            currentR = radius + changeR;
+        } else if ((PlayerMovement.is_crouching)) {
+            currentR = radius - changeR;
 
-            } else {
-                currentR = radius;
-            }
+        } else {
+            currentR = radius;
+        }
 
-    
+
 
         DetectEnemies();
         float input = Input.GetAxis("Horizontal") + Input.GetAxis("Vertical");
@@ -39,21 +43,48 @@ public class Sound : MonoBehaviour
 
         if (!prevMoving && moving) {
             prevMoving = true;
-            audioSource.Play();
-            
+            walking.Play();
+
         } else if (!moving && prevMoving) {
             moving = false;
-            audioSource.Stop();
+            walking.Stop();
         }
         prevMoving = moving;
-        audioSource.pitch = pitch * currentR / radius;
+        walking.pitch = pitch * currentR / radius;
+
+        if (!nearEnemy && hasEnemy) {
+            nearEnemy = true;
+            heartBeat.Play();
+        } else if (nearEnemy && !hasEnemy) {
+            nearEnemy = false;
+            heartBeat.Stop();
+        }
+
     }
     void DetectEnemies() {
         Collider[] hits = Physics.OverlapSphere(transform.position, currentR);
-        foreach (Collider hit in hits) {
-            if (hit.CompareTag("Enemy")) {
-                Debug.Log("Enemy detected: " + hit.name);
+        {
+
+
+            foreach (Collider hit in hits) {
+
+                if (hit.CompareTag("Enemy")) {
+                    Debug.Log("Enemy detected: " + hit.name);
+
+                    if (!hasEnemy) {
+                        hasEnemy = true;
+                        break;
+
+                    }
+                }
+
+                hasEnemy = false;
+
+
             }
+
         }
+
     }
+    
 }
