@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4656167642102954565}
   - component: {fileID: 5380994791603983131}
   - component: {fileID: 7081835640304288141}
+  - component: {fileID: -6310780064880347923}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -179,3 +180,18 @@ MonoBehaviour:
   touching_player: 0
   tub_depth: 0.35
   y_rotation: 0
+--- !u!114 &-6310780064880347923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278866010368829331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8169b5308ab96e4da3cddcc57b04b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoverObject
+  touching_player: 0
+  mouseEnter: 0
+  player: {fileID: 0}

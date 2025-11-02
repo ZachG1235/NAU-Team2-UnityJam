@@ -75,6 +75,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4558624635835409875}
+    - targetCorrespondingSourceObject: {fileID: 616284401426269384, guid: cbd84e147ff3fd842a3a639c83017426,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5281215307069032800}
   m_SourcePrefab: {fileID: 100100000, guid: cbd84e147ff3fd842a3a639c83017426, type: 3}
 --- !u!1 &3440600879825336723 stripped
 GameObject:
@@ -120,3 +124,18 @@ MonoBehaviour:
   touching_player: 0
   tub_depth: 0.35
   y_rotation: 0
+--- !u!114 &5281215307069032800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440600879825336723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8169b5308ab96e4da3cddcc57b04b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoverObject
+  touching_player: 0
+  mouseEnter: 0
+  player: {fileID: 0}
