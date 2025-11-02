@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class countKey : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class countKey : MonoBehaviour
     public GameObject player;
     [SerializeField] private bool touching_player = false;
 
+    public TextMeshProUGUI keyText;
+    private int numKeys;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        numKeys = 0;
     }
 
     // Update is called once per frame
@@ -40,6 +44,11 @@ public class countKey : MonoBehaviour
         }
     }
     public void deleteKey() { 
+        //update key text
+        numKeys++;
+        keyText.text = "Keys: " + numKeys + "/3";
+
         numOfKeys --;
+        print("deleted key");
     }
 }
