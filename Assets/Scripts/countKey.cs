@@ -15,12 +15,13 @@ public class countKey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Num of keys: "+ numOfKeys);
         if (numOfKeys == 0) {
             door.transform.position = TPAway.transform.position;   
         }
     }
 
-    void deleteKey() { 
+    public void deleteKey() { 
         numOfKeys --;
     }
 }
