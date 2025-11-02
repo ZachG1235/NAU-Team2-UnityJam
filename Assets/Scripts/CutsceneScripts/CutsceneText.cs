@@ -11,6 +11,7 @@ public class CutsceneText : MonoBehaviour
     public float typingSpeed = 0.05f;
     public float initialDelay = 1f;
     public float ending_seconds_wait_time = 5f;
+    public int lvl;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,13 +30,18 @@ public class CutsceneText : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed); // wait
         }
 
-        yield return new WaitForSeconds(ending_seconds_wait_time);
-        FinishCutscene();
+        if(lvl == 1)
+        {
+            yield return new WaitForSeconds(ending_seconds_wait_time);
+            FinishCutscene();
+        }
+        
     }
 
     public void FinishCutscene()
     {
         SceneManager.LoadScene("Level");
+        
     }
 
 
