@@ -862,7 +862,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dafdbeebffea5f48a815c69aff4355c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneText
-  text: []
+  text:
+  - Alex! I'm here to help! Hurry we need to go!
+  - 'Alex: Dude, what are you doing here. Its been 2 years you need to move on.'
+  - But... but that alien kidnapped you!
+  - 'Alex: That''s my new boyfriend steve. You seriously need help, get out before
+    I call the cops.'
   textBox: {fileID: 312975017}
   typingSpeed: 0.05
   initialDelay: 1
