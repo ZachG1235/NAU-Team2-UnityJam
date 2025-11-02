@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class grabLogic : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class grabLogic : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameObject canvas;
     public countKey countKey;
+
+    //text stuff
+    public TextMeshProUGUI textBox;
+    public string words;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,6 +65,7 @@ public class grabLogic : MonoBehaviour
         newModel.transform.position = hold.transform.position;
         playerMovement.enabled = false;
         canvas.SetActive(true);
+        textBox.text = words;
         newModel.transform.LookAt(player.transform.position + new Vector3(0f, 0f, 0f));
         countKey.deleteKey();
         yield return new WaitForSeconds(timer);
