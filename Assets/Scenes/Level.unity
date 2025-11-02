@@ -15011,10 +15011,7 @@ PrefabInstance:
     - {fileID: 5748237413587344241, guid: 4d8df784cf8c3a24394ece337e943bd4, type: 3}
     - {fileID: 203714633995701278, guid: 4d8df784cf8c3a24394ece337e943bd4, type: 3}
     - {fileID: 4950491532966040965, guid: 4d8df784cf8c3a24394ece337e943bd4, type: 3}
-<<<<<<< HEAD
-=======
     - {fileID: 9135504383984500651, guid: 4d8df784cf8c3a24394ece337e943bd4, type: 3}
->>>>>>> 49f7ce25243575c04031628f0394ed73b229dc4f
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8df784cf8c3a24394ece337e943bd4, type: 3}
@@ -25118,17 +25115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 7132299722380441528, guid: 82ea11e6a2d3d7041a5926d9a220111c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0636
-=======
     - target: {fileID: 6618986083222402303, guid: 82ea11e6a2d3d7041a5926d9a220111c,
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.53
->>>>>>> 49f7ce25243575c04031628f0394ed73b229dc4f
       objectReference: {fileID: 0}
     - target: {fileID: 8728835036222736739, guid: 82ea11e6a2d3d7041a5926d9a220111c,
         type: 3}
@@ -28215,12 +28205,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b17b4d39f33e45d4785eaaf9062e5002, type: 2}
-<<<<<<< HEAD
-    - target: {fileID: 5993498173439096625, guid: c95ab41648a6f6b47860b4cba2b9bf7a,
-        type: 3}
-      propertyPath: flickeringRenderer
-      value: 
-=======
     - target: {fileID: 6170153935800920958, guid: c95ab41648a6f6b47860b4cba2b9bf7a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -28230,7 +28214,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -3.05
->>>>>>> 49f7ce25243575c04031628f0394ed73b229dc4f
       objectReference: {fileID: 0}
     - target: {fileID: 6797404600963191783, guid: c95ab41648a6f6b47860b4cba2b9bf7a,
         type: 3}
