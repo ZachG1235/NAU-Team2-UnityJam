@@ -382,7 +382,7 @@ MonoBehaviour:
   speed: 1.7
   sprint_multiplier: 1.8
   crouch_multiplier: 0.3
-  mouseSensitivity: 100
+  mouseSensitivity: 500
   is_running: 0
   is_crouching: 0
   is_hiding: 0
@@ -390,6 +390,7 @@ MonoBehaviour:
   camera_change_rate: 1
   standing_camera_height: 0.6
   crouched_camera_height: 0.3
+  enemy: {fileID: 0}
 --- !u!54 &6040611632985474396
 Rigidbody:
   m_ObjectHideFlags: 0
