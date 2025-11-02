@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class HoverObject : MonoBehaviour {
@@ -8,14 +9,19 @@ public class HoverObject : MonoBehaviour {
     void Start() {
         hoverManager = FindFirstObjectByType<HoverManager>();
         // Finds the UI manager
+        //add myself to a list in the hover manager
     }
     void Update() {
         if (touching_player && mouseEnter) {
             Debug.Log("ahhhhhh");
-            hoverManager.ShowHoverText(transform, "Press E");
+            hoverManager.currentObject = this;
+            hoverManager.ShowHoverText("Press E");
         }
-        if (!touching_player || !mouseEnter) {
-            hoverManager.HideHoverText();
+        // make only this current object is hiding text
+        if (hoverManager.currentObject == this) {
+            if (!touching_player || !mouseEnter) {
+                hoverManager.HideHoverText();
+            }
         }
     }
 
