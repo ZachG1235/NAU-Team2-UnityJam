@@ -68,8 +68,8 @@ public class grabLogic : MonoBehaviour
         canvas.SetActive(true);
         textBox.text = words;
         
-        Vector3 targetPosition = new Vector3(newModel.transform.position.x, player.transform.position.y, newModel.transform.position.z);
-        player.transform.LookAt(targetPosition);
+        Vector3 targetPosition = new Vector3(hold.transform.position.x, hold.transform.position.y, hold.transform.position.z);
+        //player.transform.LookAt(targetPosition);
         countKey.deleteKey();
         yield return new WaitForSeconds(timer);
         playerMovement.enabled = true;
