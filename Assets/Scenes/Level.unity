@@ -3019,6 +3019,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &136405939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767990561633690479, guid: c32ad136727772247af6c82cb3226d8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 745309059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &136405945 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5247693107737695798, guid: c32ad136727772247af6c82cb3226d8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 745309059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &136528512
 GameObject:
   m_ObjectHideFlags: 0
@@ -26020,6 +26032,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7821685972265305724, guid: a4911fb8018aee0468ee67c97272f22f,
+        type: 3}
+      propertyPath: BypassListenerEffects
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7821685972265305724, guid: a4911fb8018aee0468ee67c97272f22f,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1426986260394017878, guid: a4911fb8018aee0468ee67c97272f22f,
         type: 3}
       propertyPath: m_Name
@@ -26097,6 +26119,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5641087635988752402, guid: a4911fb8018aee0468ee67c97272f22f,
         type: 3}
+      propertyPath: seen
+      value: 
+      objectReference: {fileID: 136405945}
+    - target: {fileID: 5641087635988752402, guid: a4911fb8018aee0468ee67c97272f22f,
+        type: 3}
+      propertyPath: player_seen
+      value: 
+      objectReference: {fileID: 136405939}
+    - target: {fileID: 5641087635988752402, guid: a4911fb8018aee0468ee67c97272f22f,
+        type: 3}
       propertyPath: waypoints.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -26135,7 +26167,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[6]'
       value: 
       objectReference: {fileID: 438393364}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7821685972265305724, guid: a4911fb8018aee0468ee67c97272f22f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
