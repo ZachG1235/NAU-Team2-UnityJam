@@ -893,9 +893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quit
-
-'
+  m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0725c42d004d6f04d9a12d1298cc4041, type: 2}
   m_sharedMaterial: {fileID: -4369781421888284197, guid: 0725c42d004d6f04d9a12d1298cc4041,
@@ -1589,9 +1587,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2023771956}
         m_TargetAssemblyTypeName: MenuScriipt, Assembly-CSharp
-        m_MethodName: Quit
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -28965,6 +28965,16 @@ PrefabInstance:
       objectReference: {fileID: 136405945}
     - target: {fileID: 5641087635988752402, guid: a4911fb8018aee0468ee67c97272f22f,
         type: 3}
+      propertyPath: walkSpeed
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641087635988752402, guid: a4911fb8018aee0468ee67c97272f22f,
+        type: 3}
+      propertyPath: chaseSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641087635988752402, guid: a4911fb8018aee0468ee67c97272f22f,
+        type: 3}
       propertyPath: player_seen
       value: 
       objectReference: {fileID: 136405939}

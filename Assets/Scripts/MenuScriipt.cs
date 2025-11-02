@@ -35,6 +35,11 @@ public class MenuScriipt : MonoBehaviour
         Application.Quit();
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("TitleScreeen");
+    }
+
     public void OnSliderValueChanged(float newValue)
     {
         Debug.Log("Slider value changed to: " + newValue);
