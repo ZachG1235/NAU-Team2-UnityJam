@@ -359,8 +359,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0725c42d004d6f04d9a12d1298cc4041, type: 2}
+  m_sharedMaterial: {fileID: -4369781421888284197, guid: 0725c42d004d6f04d9a12d1298cc4041,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -866,7 +867,7 @@ MonoBehaviour:
   - Alex! I'm here to help! Hurry we need to go!
   - 'Alex: Dude, what are you doing here. Its been 2 years you need to move on.'
   - But... but that alien kidnapped you!
-  - 'Alex: That''s my new boyfriend steve. You seriously need help, get out before
+  - 'Alex: That''s my new boyfriend steve. You seriously need help, Get out before
     I call the cops.'
   textBox: {fileID: 312975017}
   typingSpeed: 0.05
@@ -1707,8 +1708,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 13.73053, y: -35.163513}
-  m_SizeDelta: {x: -274.3, y: -70.3263}
+  m_AnchoredPosition: {x: 13.73053, y: -35.16333}
+  m_SizeDelta: {x: -274.3, y: -70.32666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933484189
 MonoBehaviour:
@@ -1723,7 +1724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6075471, g: 0.6075471, b: 0.6075471, a: 0.50980395}
+  m_Color: {r: 0.35602295, g: 1, b: 0.111320674, a: 0.44705883}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
