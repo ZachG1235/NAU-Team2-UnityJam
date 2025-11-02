@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 previous_location;
     private Quaternion previous_rotation;
     private float unhide_cooldown = 1f;
-
+    private GameObject lastHidObject;
 
 
     float verticalRotation = 0f;
@@ -120,12 +120,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Hide(Vector3 teleport_position, Vector3 rotation)
+    public void Hide(Vector3 teleport_position, Vector3 rotation, GameObject object_reference)
     {
         unhide_cooldown = 1f;
         // save prior vectors
         previous_location = gameObject.transform.position;
         previous_rotation = gameObject.transform.rotation;
+        lastHidObject = object_reference;
 
         is_hiding = true;
         controller.enabled = false;
@@ -140,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gameObject.transform.position = previous_location;
         gameObject.transform.rotation = previous_rotation;
+        lastHidObject.GetComponent<PropHide>().StartTimer();
 
         is_hiding = false;
         controller.enabled = true;
