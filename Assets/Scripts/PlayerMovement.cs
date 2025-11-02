@@ -13,12 +13,20 @@ public class PlayerMovement : MonoBehaviour
 
     public bool is_running = false;
     public bool is_crouching = false;
+    public bool is_hiding = false;
 
     [Header("Player Camera")]
     public Transform playerCamera;
     public float camera_change_rate = 1f;
     public float standing_camera_height = 0.6f;
     public float crouched_camera_height = 0.3f;
+
+    [Header("Hiding Vars")]
+    private Vector3 previous_location;
+    private Quaternion previous_rotation;
+    private float unhide_cooldown = 1f;
+
+
 
     float verticalRotation = 0f;
     CharacterController controller;
@@ -33,7 +41,22 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetPlayerStatus();
-        MovePlayer();
+        if (!is_hiding)
+        {
+            MovePlayer();
+        }
+        else
+        {
+            if (unhide_cooldown < 0 && Input.GetKeyDown(KeyCode.E))
+            {
+                UnHide();
+            }
+            else
+            {
+                unhide_cooldown -= 0.01f;
+                // Debug.Log(unhide_cooldown);
+            }
+        }
         LookAround();
         TransitionCamera();
         // Debug.Log("Is running = " + is_running + " is crouch = " + is_crouching);
@@ -95,6 +118,31 @@ public class PlayerMovement : MonoBehaviour
             // move camera to standing y position
             playerCamera.transform.localPosition += Vector3.up * camera_change_rate * Time.deltaTime;
         }
+    }
+
+    public void Hide(Vector3 teleport_position, Vector3 rotation)
+    {
+        unhide_cooldown = 1f;
+        // save prior vectors
+        previous_location = gameObject.transform.position;
+        previous_rotation = gameObject.transform.rotation;
+
+        is_hiding = true;
+        controller.enabled = false;
+        
+        // apply rotation
+        controller.transform.position = teleport_position;
+        transform.rotation = Quaternion.Euler(rotation);
+        
+    }
+
+    public void UnHide()
+    {
+        gameObject.transform.position = previous_location;
+        gameObject.transform.rotation = previous_rotation;
+
+        is_hiding = false;
+        controller.enabled = true;
     }
 
 }

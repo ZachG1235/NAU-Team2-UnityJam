@@ -1,10 +1,14 @@
 using UnityEngine;
 using System;
 using System.Runtime.CompilerServices;
+using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 public class BathtubHide : MonoBehaviour
 {
     [SerializeField] private bool touching_player = false;
+    private GameObject player;
+    public float tub_depth = 0.3f;
     // Start is called once before the first execution of Update after the MonoBehaviour is 
     
     void Start()
@@ -15,20 +19,37 @@ public class BathtubHide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Debug.Log("touching_player: " + touching_player + " Pressing E: " + Input.GetKeyDown(KeyCode.E) + " not hiding: " + !player.GetComponent<PlayerMovement>().is_hiding);
+        // if currently touching player AND player presses 'e' AND player is currently not hiding
+        if (touching_player && Input.GetKeyDown(KeyCode.E))
+        {
+            if (!player.GetComponent<PlayerMovement>().is_hiding)
+            {
+                // let the player hide
+                Vector3 hide_position = gameObject.transform.position;
+                hide_position -= new Vector3(0f, tub_depth, 0f);
+                player.GetComponent<PlayerMovement>().Hide(hide_position, new Vector3(gameObject.transform.rotation.x, gameObject.transform.rotation.y - 90, gameObject.transform.rotation.z));
+            }
+        }
     }   
 
     void OnTriggerEnter(Collider collision)
     {
+        if (collision.gameObject.name == "Player")
+        {
+            player = collision.gameObject;
+        }
         if (collision.gameObject.name == "PlayerCapsule")
         {
+            
             touching_player = true;
         }
-        else
+    }
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.name == "PlayerCapsule")
         {
             touching_player = false;
         }
-        
     }
-
 }
