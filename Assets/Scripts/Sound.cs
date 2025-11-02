@@ -37,7 +37,7 @@ public class Sound : MonoBehaviour {
         {
             currentR = radius;
         }
-        Debug.Log("Current Radius: " + currentR);
+        // Debug.Log("Current Radius: " + currentR);
 
 
         DetectEnemies();

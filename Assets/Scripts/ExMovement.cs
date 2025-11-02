@@ -39,10 +39,12 @@ public class ExMovement : MonoBehaviour
             isChasing = true;
             navAgent.speed = chaseSpeed;
             navAgent.SetDestination(fov.playerRef.transform.position);
+            animator.Play("Walking_A 0");
         }
         // otherwise, assume was chasing but cant see player
         else if (isChasing && navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
+            Debug.Log("Lost sight of player, returning to patrol");
             // stop chasing, go to nearest waypoint
             isChasing = false;
             navAgent.speed = walkSpeed;
@@ -70,6 +72,9 @@ public class ExMovement : MonoBehaviour
     
     public IEnumerator WaypointReached()
     {
+        isChasing = false;
+            navAgent.speed = walkSpeed;
+
         // play idle animation
         animator.Play("idle");
 
@@ -119,7 +124,7 @@ public class ExMovement : MonoBehaviour
             navAgent.SetDestination(waypoints[currentWaypointIndex].position);
 
             // play walk aimation
-            animator.Play("walk");
+            animator.Play("Walking_A 0");
         }
     }
 }

@@ -1,11 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class MenuScriipt : MonoBehaviour
 {
+    public Slider slider;
+
+    [SerializeField]
+    private Text sensText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        slider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 
     // Update is called once per frame
@@ -18,6 +25,13 @@ public class MenuScriipt : MonoBehaviour
     {
         print("play");
         //go to the correct scene
+        SceneManager.LoadScene("IntroCutscene");
+    }
 
+    public void OnSliderValueChanged(float newValue)
+    {
+        Debug.Log("Slider value changed to: " + newValue);
+        sensText.text = newValue.ToString();
+        sensitivity.mouse_sensitivity = newValue;
     }
 }
