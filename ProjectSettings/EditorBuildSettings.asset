@@ -5,14 +5,23 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_3DStealthGame/Tutorial_Demo/Demo_Scenes/MainMenu.unity
     guid: e0afa25d30aeb924895fa68e23be7af2
   - enabled: 1
     path: Assets/Scenes/AwesomecutsceneScene.unity
     guid: 6fcf9ec8b43503a45871ec9b3274f385
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ex.unity
     guid: 7c3010773091d1549a1148fd95a3a19e
+  - enabled: 1
+    path: Assets/Scenes/TitleScreeen.unity
+    guid: d4633de5d18df5d44a2c32773faec57a
+  - enabled: 1
+    path: Assets/Scenes/IntroCutscene.unity
+    guid: c72796e72bbe8214895cdd03bda1f5bc
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: 6845666ae367e5e4e863fbbe45a1b130
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

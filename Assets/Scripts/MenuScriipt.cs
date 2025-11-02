@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MenuScriipt : MonoBehaviour
 {
@@ -18,6 +20,6 @@ public class MenuScriipt : MonoBehaviour
     {
         print("play");
         //go to the correct scene
-
+        SceneManager.LoadScene("IntroCutscene");
     }
 }
