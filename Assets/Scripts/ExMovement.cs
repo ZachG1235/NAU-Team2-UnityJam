@@ -12,6 +12,7 @@ public class ExMovement : MonoBehaviour
 
     public float walkSpeed = 1f;
     public float chaseSpeed = 1.2f;
+    public bool isChasing = false;
 
     [Header("Patrol Waypoints; in sequenctial order")]
     [Tooltip("Place waypoints in scene and assign them here")]
@@ -19,7 +20,6 @@ public class ExMovement : MonoBehaviour
     // public float idleTime;   // time to idle at each waypoint; making random instead
     private int currentWaypointIndex = 0;
     private int tempIndex,waypointCount;
-    private bool isChasing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
