@@ -13,15 +13,27 @@ public class CutsceneText : MonoBehaviour
     public float ending_seconds_wait_time = 5f;
     public int lvl;
     public AudioSource text_bloop_sfx;
+    public string introText;
+    public GameObject introTextBox;
+    public bool isTyping;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(DisplayText());
+        if(lvl != -1){
+            StartCoroutine(DisplayText());
+        }
+        else{
+            if(introTextBox != null){
+                introTextBox.SetActive(true);
+                StartCoroutine(TypeText(introText));
+            }
+        }
         // Make cursor visible
         Cursor.visible = true;                    
         Cursor.lockState = CursorLockMode.None;
     }
+
 
     IEnumerator DisplayText()
     {
@@ -34,6 +46,7 @@ public class CutsceneText : MonoBehaviour
     
     IEnumerator TypeText(string text)
     {
+        isTyping = true;
         int text_index = 0;
         yield return new WaitForSeconds(initialDelay);
         textBox.text = ""; // start empty
@@ -49,6 +62,7 @@ public class CutsceneText : MonoBehaviour
             }
             text_index++;
             yield return new WaitForSeconds(typingSpeed); // wait
+            
         }
 
         if(lvl == 1)
@@ -56,7 +70,13 @@ public class CutsceneText : MonoBehaviour
             yield return new WaitForSeconds(ending_seconds_wait_time);
             FinishCutscene();
         }
-        
+
+        if(introTextBox != null)
+        {
+            yield return new WaitForSeconds(ending_seconds_wait_time/2);
+            introTextBox.SetActive(false);
+        }
+
     }
 
     public void FinishCutscene()
