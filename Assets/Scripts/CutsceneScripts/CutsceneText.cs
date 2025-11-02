@@ -16,9 +16,18 @@ public class CutsceneText : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(TypeText(text[0]));
+        StartCoroutine(DisplayText());
     }
 
+    IEnumerator DisplayText()
+    {
+        for(int i = 0; i < text.Count; i++)
+        {
+            StartCoroutine(TypeText(text[i]));
+            yield return new WaitForSeconds(ending_seconds_wait_time);
+        }
+    }
+    
     IEnumerator TypeText(string text)
     {
         yield return new WaitForSeconds(initialDelay);
