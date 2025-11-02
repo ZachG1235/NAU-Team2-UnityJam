@@ -81,6 +81,11 @@ public class ExMovement : MonoBehaviour
             // wait a few seconds and decide next waypoint
             StartCoroutine("WaypointReached");
         }
+        
+    }
+
+    void FixedUpdate()
+    {
         seen_sound_cooldown -= 0.01f;
     }
     

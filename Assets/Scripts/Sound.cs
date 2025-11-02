@@ -31,7 +31,6 @@ public class Sound : MonoBehaviour {
         else if ((PlayerMovement.is_crouching))
         {
             currentR = radius - changeR;
-
         }
         else
         {
@@ -57,7 +56,7 @@ public class Sound : MonoBehaviour {
             moving = false;
             walking.Stop();
         }
-        prevMoving = moving;
+        prevMoving = moving;    
         walking.pitch = pitch * currentR / radius;
 
         if (!nearEnemy && hasEnemy) {
@@ -76,11 +75,9 @@ public class Sound : MonoBehaviour {
 
         foreach (Collider hit in hits)
         {
-
             if (hit.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy detected: " + hit.name);
-
                 if (!hasEnemy)
                 {
                     hasEnemy = true;
@@ -88,14 +85,8 @@ public class Sound : MonoBehaviour {
                     break;
                 }
             }
-
             hasEnemy = false;
-
-
         }
-
-
-
     }
     
     // Visualize the sphere in the Scene view
