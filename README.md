@@ -104,7 +104,7 @@ To play the submission for the Arizona Game Jam, please go to [https://teddybar5
 [ insert functionality after game jam here ]
 
 ## Credits
-Thank you to all the team members who contributed together to make a fanstastic game. Another thanks to all the people behind the scenes at the Arizona Game Jam for putting on such a wonderful, educative, and competitive event. Another massive thanks to the judges for their constructive critism, helping push our project in the right direction. 
+Thank you to all the team members who contributed together to make a fantastic game. Another thanks to all the people behind the scenes at the Arizona Game Jam for putting on such a wonderful, educative, and competitive event. Another massive thanks to the judges for their constructive criticism, helping push our project in the right direction. 
 
 ### LinkedIns:  
 * [Zachary Garza](https://www.linkedin.com/in/zachary-garza-a2a868365/)
