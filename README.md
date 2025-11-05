@@ -20,9 +20,9 @@ This story comes with a TWIST, and you'll figure out the twist as you find "keys
 ## Development Info
 This game was developed at the 1st Annual ***Arizona Game Jam in 2025***. The constraints were the following: use the Unity engine, only use the assets provided, no modifying the assets outside of Unity, follow the theme of "Creepy", and create it in 27 hours (we were given the theme at 11am on Saturday, 11/1, the deadline was 2pm on Sunday, 11/2). 
 
-There were 10 teams competing over at the AZ Game Jam. 2 Teams from 5 universities in Arizona. The universities consisted of Arizona State University, Northern Arizona University, University of Arizona, Grand Canyon University, and the University of Advancing Technology. 
+There were 10 teams competing over at the AZ Game Jam. Two teams from five universities in Arizona. The universities consisted of Arizona State University, Northern Arizona University, University of Arizona, Grand Canyon University, and the University of Advancing Technology. 
 
-This game was developed by Northern Arizona University Team 2, consisting of 5 prominent Game Developers coming from different backgrounds:
+This game was developed by Northern Arizona University Team 2, consisting of five prominent Game Developers coming from diverse backgrounds:
 * Zachary Garza
 * Devin Jay San Nicolas
 * Sage Tesoro
@@ -30,8 +30,6 @@ This game was developed by Northern Arizona University Team 2, consisting of 5 p
 * Jake Preston
 
 Out of the 10 teams that competed for first place, all being judged by people from prominent backgrounds in the gaming industry, ***we*** were crowned the Arizona Game Jam's champions!
-
-[insert info abuot deve process]
 
 ## Download Instructions
 
@@ -61,11 +59,11 @@ To play the submission for the Arizona Game Jam, please go to [https://teddybar5
 * Provided assistance with GitHub merges, pulls, and branch work, taught team members who've never seen Git/GitHub how to use it. 
 * Implemented and integrated the "Hiding" feature, being able to hide under furniture to escape danger.
 * Implemented all player movement, controls, and status variables.
-* Created the main menu screen and visuals.
-* Proivided major assistance with integration of moving parts, polish on map design/sound, and bug fixing.
+* Created the main menu screen including visual, functionality, and music.
+* Provided major assistance with integration of moving parts, polish on map design/sound, and bug fixing.
 * Added sound design to speech bubbles, main menu, and Alien "spotting" the player to further immerse the player.  
 #### After Game Jam
-[ insert functionaltiy after game jam here ]
+[ insert functionality after game jam here ]
 
 ### Devin Jay San Nicolas
 #### For Game Jam
@@ -75,24 +73,24 @@ To play the submission for the Arizona Game Jam, please go to [https://teddybar5
 * Integrated Alien into gameplay.
 * Assisted in creating builds of the project.
 #### After Game Jam
-[ insert functionaltiy after game jam here ]
+[ insert functionality after game jam here ]
 
 ### Sage Tesoro
 #### For Game Jam
 * Added the "noise" feature, allowing the player to be detected from variable distances based on movement speed. 
 * Added sound design for player movement and Alien ambience.
 * Created an indication system to allow players to know when they can hide, enhancing user experience.
-* Provided logic for key generation, functionality, and "momento" replacements. 
+* Provided logic for key generation, functionality, and "memento" replacements. 
 #### After Game Jam
-[ insert functionaltiy after game jam here ]
+[ insert functionality after game jam here ]
 
 ### Bex Cabral
 #### For Game Jam
 * Designed, integrated, and put together assets to form the entire gameplay map. 
-* Assembled/Integrated the "momentos" the player finds. 
+* Assembled/Integrated the "mementos" the player finds. 
 * Improved the visuals of the main menu, dialogue boxes, and cutscene text.  
 #### After Game Jam
-[ insert functionaltiy after game jam here ]
+[ insert functionality after game jam here ]
 
 ### Jake Preston
 #### For Game Jam
@@ -100,10 +98,10 @@ To play the submission for the Arizona Game Jam, please go to [https://teddybar5
 * Created the dialogue system, allowing text to be displayed in a visually pleasing and informative way to the player. 
 * Assembled, animated, and designed all cutscenes (intro, win, and lose) using the Unity Timeline. 
 * Assisted in main menu integration, creating buttons to navigate to other scenes.
-* Assisted in creating the main build of the project, debugged most build erros.
+* Assisted in creating the main build of the project, debugged most build errors.
 
 #### After Game Jam
-[ insert functionaltiy after game jam here ]
+[ insert functionality after game jam here ]
 
 ## Credits
 Thank you to all the team members who contributed together to make a fanstastic game. Another thanks to all the people behind the scenes at the Arizona Game Jam for putting on such a wonderful, educative, and competitive event. Another massive thanks to the judges for their constructive critism, helping push our project in the right direction. 
