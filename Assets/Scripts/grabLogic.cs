@@ -15,11 +15,11 @@ public class grabLogic : MonoBehaviour
     public GameObject teleportAway;
     public bool curInterecting = false;
     public PlayerMovement playerMovement;
-    public GameObject canvas;
+    public GameObject textBox;
     public countKey countKey;
 
     //text stuff
-    public TextMeshProUGUI textBox;
+    public TextMeshProUGUI text;
     public string words;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,10 +63,9 @@ public class grabLogic : MonoBehaviour
 
         newModel.transform.position = hold.transform.position;
 
-        print(textBox);
         playerMovement.enabled = false;
-        canvas.SetActive(true);
-        textBox.text = words;
+        textBox.SetActive(true);
+        text.text = words;
         
         Vector3 targetPosition = new Vector3(hold.transform.position.x, hold.transform.position.y, hold.transform.position.z);
         //player.transform.LookAt(targetPosition);
@@ -75,6 +74,6 @@ public class grabLogic : MonoBehaviour
         playerMovement.enabled = true;
         newModel.transform.position = teleportAway.transform.position;
         curInterecting = false;
-        canvas.SetActive(false);
+        textBox.SetActive(false);
     }
 }

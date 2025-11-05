@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("Unhide Cooldown " + unhide_cooldown);
+        // Debug.Log("Unhide Cooldown " + unhide_cooldown);
         if (is_hiding)
         {
             unhide_cooldown -= 0.01f;
