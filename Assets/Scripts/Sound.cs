@@ -17,7 +17,7 @@ public class Sound : MonoBehaviour {
     public bool prevMoving = false;
     public bool nearEnemy = false;
     public bool hasEnemy;
-    private ExMovement enemy;
+    private EnemyMovement enemy;
     //public SphereCollider SphereCollider;
     void Start() {
     }
@@ -81,7 +81,7 @@ public class Sound : MonoBehaviour {
                 if (!hasEnemy)
                 {
                     hasEnemy = true;
-                    enemy = hit.GetComponent<ExMovement>();
+                    enemy = hit.GetComponent<EnemyMovement>();
                     break;
                 }
             }
