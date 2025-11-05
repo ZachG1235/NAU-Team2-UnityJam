@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class ExMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [Header("Component References")]
     public NavMeshAgent navAgent;

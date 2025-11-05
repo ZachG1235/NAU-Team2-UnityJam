@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     float verticalRotation = 0f;
     CharacterController controller;
-    public ExMovement enemy;
+    public EnemyMovement enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

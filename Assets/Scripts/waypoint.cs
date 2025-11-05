@@ -4,9 +4,9 @@ public class waypoint : MonoBehaviour
 {   
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ex") && !other.GetComponent<ExMovement>().isChasing)
+        if (other.CompareTag("Enemy") && !other.GetComponent<EnemyMovement>().isChasing)
         {
-            other.GetComponent<ExMovement>().StartCoroutine("WaypointReached");
+            other.GetComponent<EnemyMovement>().StartCoroutine("WaypointReached");
         }
     }
 }
