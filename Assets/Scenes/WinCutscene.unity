@@ -1137,20 +1137,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneText
   text:
-  - Alex! I'm here to help! Hurry, we need to go!
-  - 'Alex: Dude, what are you doing here? It''s been 2 years, move on!'
+  - Alex! I'm here to help! Hurry we need to go!
+  - 'Alex: Dude, what are you doing here. Its been 2 years you need to move on.'
   - But... but that alien kidnapped you!
-  - 'Alex: That''s my new boyfriend, Steve. You seriously need some help. Get out
-    before I call the cops!'
+  - 'Alex: That''s my new boyfriend steve. You seriously need help, Get out before
+    I call the cops.'
   textBox: {fileID: 312975017}
   typingSpeed: 0.05
   initialDelay: 1
   ending_seconds_wait_time: 5
   lvl: 0
   text_bloop_sfx: {fileID: 929362233}
-  introText: 
-  introTextBox: {fileID: 0}
-  isTyping: 0
 --- !u!82 &929362233
 AudioSource:
   m_ObjectHideFlags: 0

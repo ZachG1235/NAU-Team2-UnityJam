@@ -395,16 +395,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneText
   text:
-  - Unhand me, foul creature! I must rescue Alex!
+  - Unhand me foul creature! I must rescue Alex!
   textBox: {fileID: 312975017}
   typingSpeed: 0.05
   initialDelay: 1
   ending_seconds_wait_time: 5
   lvl: 0
   text_bloop_sfx: {fileID: 478378456}
-  introText: 
-  introTextBox: {fileID: 0}
-  isTyping: 0
 --- !u!82 &478378456
 AudioSource:
   m_ObjectHideFlags: 0

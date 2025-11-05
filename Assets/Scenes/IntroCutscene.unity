@@ -198,16 +198,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneText
   text:
-  - OMG! Is that Alex? She's in trouble! An alien is kidnapping her!
+  - OMG! Is that Alex? She's in trouble an alien is kidnapping her!
   textBox: {fileID: 1525012268}
   typingSpeed: 0.05
   initialDelay: 1
   ending_seconds_wait_time: 4.5
   lvl: 1
   text_bloop_sfx: {fileID: 82452471}
-  introText: 
-  introTextBox: {fileID: 0}
-  isTyping: 0
 --- !u!82 &82452471
 AudioSource:
   m_ObjectHideFlags: 0
