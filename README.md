@@ -63,7 +63,7 @@ To play the submission for the Arizona Game Jam, please go to [https://teddybar5
 * Provided major assistance with integration of moving parts, polish on map design/sound, and bug fixing.
 * Added sound design to speech bubbles, main menu, and Alien "spotting" the player to further immerse the player.  
 #### After Game Jam
-[ insert functionality after game jam here ]
+* Created the README for this project (you're reading it right now!)
 
 ### Devin Jay San Nicolas
 #### For Game Jam
