@@ -46,7 +46,7 @@ public class countKey : MonoBehaviour
     public void deleteKey() { 
         //update key text
         numKeys++;
-        keyText.text = "Keys: " + numKeys + "/3";
+        keyText.text = "Goal: " + numKeys + "/3 Keys Found";
 
         numOfKeys --;
         print("deleted key");
