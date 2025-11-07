@@ -18,6 +18,7 @@ public class initializeKey : MonoBehaviour
     [Header("Text Stuff")]
     public GameObject canvasObject;
     public TextMeshProUGUI textBox;
+    public TextMeshProUGUI goalText;
     public string words;
     public float textTimer;
 
@@ -37,6 +38,7 @@ public class initializeKey : MonoBehaviour
     {
         if (touching_player && Input.GetKeyDown(KeyCode.E)) {
             showKeys();
+            goalText.text = "Goal: 0/3 Keys Found";
         }
     }
 

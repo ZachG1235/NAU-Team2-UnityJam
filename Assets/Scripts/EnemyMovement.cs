@@ -3,15 +3,18 @@ using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class EnemyMovement : MonoBehaviour
-{
+public class EnemyMovement : MonoBehaviour {
     [Header("Component References")]
     public NavMeshAgent navAgent;
     public Animator animator;
     public FieldOfView fov;
 
+    public float wait = 4;
+    public bool timing = false;
+    public GameObject vignette;
+
     public float walkSpeed = 1f;
-    public float chaseSpeed = 1.2f;
+    public float chaseSpeed = 1.5f;
     public bool isChasing = false;
     public GameObject player_seen;
     private AudioSource seen_audio;
@@ -22,11 +25,10 @@ public class EnemyMovement : MonoBehaviour
     public List<Transform> waypoints;
     // public float idleTime;   // time to idle at each waypoint; making random instead
     private int currentWaypointIndex = 0;
-    private int tempIndex,waypointCount;
+    private int tempIndex, waypointCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         navAgent.SetDestination(waypoints[0].position);
         waypointCount = waypoints.Count;
         navAgent.speed = walkSpeed;
@@ -34,29 +36,26 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // check if can see player
-        if (fov.canSeePlayer)
-        {
+        if (fov.canSeePlayer) {
             // CHASEEEEEEE
             isChasing = true;
+            if (!timing) {
+                StartCoroutine(Timer());
+            }
             navAgent.speed = chaseSpeed;
             navAgent.SetDestination(fov.playerRef.transform.position);
             animator.Play("Walking_A 0");
-            if (seen_sound_cooldown < 0)
-            {
+            if (seen_sound_cooldown < 0) {
                 seen_sound_cooldown = 1f;
                 seen_audio.Play();
-            }
-            else if (seen_sound_cooldown < 0.10f)
-            {
+            } else if (seen_sound_cooldown < 0.10f) {
                 seen_audio.Stop();
             }
         }
         // otherwise, assume was chasing but cant see player
-        else if (isChasing && navAgent.remainingDistance <= navAgent.stoppingDistance)
-        {
+        else if (isChasing && navAgent.remainingDistance <= navAgent.stoppingDistance) {
             Debug.Log("Lost sight of player, returning to patrol");
             // stop chasing, go to nearest waypoint
             isChasing = false;
@@ -65,11 +64,9 @@ public class EnemyMovement : MonoBehaviour
             // find nearest waypoint
             float nearestDist = Vector3.Distance(transform.position, waypoints[0].position);
             int nearestIndex = 0;
-            for (int i = 1; i < waypointCount; i++)
-            {
+            for (int i = 1; i < waypointCount; i++) {
                 float dist = Vector3.Distance(transform.position, waypoints[i].position);
-                if (dist < nearestDist)
-                {
+                if (dist < nearestDist) {
                     nearestDist = dist;
                     nearestIndex = i;
                 }
@@ -77,22 +74,20 @@ public class EnemyMovement : MonoBehaviour
 
             // set destination to nearest waypoint
             currentWaypointIndex = nearestIndex;
-            
+
             // wait a few seconds and decide next waypoint
             StartCoroutine("WaypointReached");
         }
-        
+
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         seen_sound_cooldown -= 0.01f;
     }
-    
-    public IEnumerator WaypointReached()
-    {
+
+    public IEnumerator WaypointReached() {
         isChasing = false;
-            navAgent.speed = walkSpeed;
+        navAgent.speed = walkSpeed;
 
         // play idle animation
         animator.Play("idle");
@@ -107,43 +102,38 @@ public class EnemyMovement : MonoBehaviour
 
         // special cases for out of bounds indexes
         // using if statements cause apparently cant use switch with unconstant vars (sigh)
-        if (currentWaypointIndex == -3)
-        {
+        if (currentWaypointIndex == -3) {
             currentWaypointIndex = waypointCount - 3;
-        }
-        else if (currentWaypointIndex == -2)
-        {
+        } else if (currentWaypointIndex == -2) {
             currentWaypointIndex = waypointCount - 2;
-        }
-        else if (currentWaypointIndex == -1)
-        {
+        } else if (currentWaypointIndex == -1) {
             currentWaypointIndex = waypointCount - 1;
-        }
-        else if (currentWaypointIndex == waypointCount)
-        {
+        } else if (currentWaypointIndex == waypointCount) {
             currentWaypointIndex = 0;
-        }
-        else if (currentWaypointIndex == waypointCount + 1)
-        {
+        } else if (currentWaypointIndex == waypointCount + 1) {
             currentWaypointIndex = 1;
-        }
-        else if (currentWaypointIndex == waypointCount + 2)
-        {
+        } else if (currentWaypointIndex == waypointCount + 2) {
             currentWaypointIndex = 2;
         }
 
         // also checking if index stayed the same
-        if (currentWaypointIndex == tempIndex)
-        {
+        if (currentWaypointIndex == tempIndex) {
             StartCoroutine("WaypointReached");
-        }
-        else
-        {
+        } else {
             // move to next waypoint
             navAgent.SetDestination(waypoints[currentWaypointIndex].position);
 
             // play walk aimation
             animator.Play("Walking_A 0");
         }
+    }
+    IEnumerator Timer() {
+        timing = true;
+        vignette.SetActive(true);
+        yield return new WaitForSeconds(wait);
+        vignette.SetActive(false);
+        yield return new WaitForSeconds(wait);
+        timing = false;
+
     }
 }
