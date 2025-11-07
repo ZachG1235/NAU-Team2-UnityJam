@@ -68,7 +68,7 @@ public class grabLogic : MonoBehaviour
         text.text = words;
         
         Vector3 targetPosition = new Vector3(hold.transform.position.x, hold.transform.position.y, hold.transform.position.z);
-        //player.transform.LookAt(targetPosition);
+        newModel.transform.LookAt(player.transform);
         countKey.deleteKey();
         yield return new WaitForSeconds(timer);
         playerMovement.enabled = true;
