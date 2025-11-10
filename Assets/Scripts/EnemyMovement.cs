@@ -93,7 +93,7 @@ public class EnemyMovement : MonoBehaviour {
         if (!isChasing)
         {
             isChasing = false;
-            navAgent.speed = walkSpeed;
+            navAgent.speed = 0;
 
             // play idle animation
             animator.Play("idle");
@@ -143,7 +143,7 @@ public class EnemyMovement : MonoBehaviour {
                 // move to next waypoint
                 currentWaypoint = waypoints[currentWaypointIndex].gameObject;
                 navAgent.SetDestination(waypoints[currentWaypointIndex].position);
-
+                navAgent.speed = walkSpeed;
                 // play walk aimation
                 animator.Play("Walking_A 0");
             }
