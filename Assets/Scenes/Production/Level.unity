@@ -17324,7 +17324,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0df05209ce1109c4c94da3566cc4edab, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 64566d2307602de4f9a86ac8a59fd236, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &598315414
 Transform:
@@ -21389,6 +21389,11 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 333642094}
+    - target: {fileID: 5944971108612571151, guid: c32ad136727772247af6c82cb3226d8f,
+        type: 3}
+      propertyPath: soundScript
+      value: 
+      objectReference: {fileID: 1424818361}
     - target: {fileID: 7659285534188447850, guid: c32ad136727772247af6c82cb3226d8f,
         type: 3}
       propertyPath: m_Name
@@ -30282,7 +30287,7 @@ PrefabInstance:
     - target: {fileID: 1426986260394017878, guid: a4911fb8018aee0468ee67c97272f22f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3787787961789881661, guid: a4911fb8018aee0468ee67c97272f22f,
         type: 3}
@@ -40243,6 +40248,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349cb6ce2cc01114a8f9cddb5b888843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+--- !u!114 &1424818361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 234204977244012286, guid: c32ad136727772247af6c82cb3226d8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 745309059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424818350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea52de915b59d9148908b8fdd363d33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sound
 --- !u!1001 &1425279376
 PrefabInstance:
   m_ObjectHideFlags: 0

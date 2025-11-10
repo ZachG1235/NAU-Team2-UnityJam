@@ -26,10 +26,12 @@ public class EnemyMovement : MonoBehaviour {
     // public float idleTime;   // time to idle at each waypoint; making random instead
     private int currentWaypointIndex = 0;
     private int tempIndex, waypointCount;
+    private GameObject currentWaypoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         navAgent.SetDestination(waypoints[0].position);
+        currentWaypoint = waypoints[0].gameObject;
         waypointCount = waypoints.Count;
         navAgent.speed = walkSpeed;
         seen_audio = player_seen.GetComponent<AudioSource>();
@@ -85,55 +87,81 @@ public class EnemyMovement : MonoBehaviour {
         seen_sound_cooldown -= 0.01f;
     }
 
-    public IEnumerator WaypointReached() {
-        isChasing = false;
-        navAgent.speed = walkSpeed;
+    public IEnumerator WaypointReached()
+    {
+        // check if not chasing?
+        if (!isChasing)
+        {
+            isChasing = false;
+            navAgent.speed = 0;
 
-        // play idle animation
-        animator.Play("idle");
+            // play idle animation
+            animator.Play("idle");
 
-        // yield return new WaitForSeconds(idleTime);
-        yield return new WaitForSeconds(Random.Range(2f, 5f));
+            // yield return new WaitForSeconds(idleTime);
+            yield return new WaitForSeconds(Random.Range(2f, 5f));
 
-        // decide next waypoint
-        // choose random waypoint near current waypoint
-        tempIndex = currentWaypointIndex;
-        currentWaypointIndex += Random.Range(-3, 4);
+            // decide next waypoint
+            // choose random waypoint near current waypoint
+            tempIndex = currentWaypointIndex;
+            currentWaypointIndex += Random.Range(-3, 4);
 
-        // special cases for out of bounds indexes
-        // using if statements cause apparently cant use switch with unconstant vars (sigh)
-        if (currentWaypointIndex == -3) {
-            currentWaypointIndex = waypointCount - 3;
-        } else if (currentWaypointIndex == -2) {
-            currentWaypointIndex = waypointCount - 2;
-        } else if (currentWaypointIndex == -1) {
-            currentWaypointIndex = waypointCount - 1;
-        } else if (currentWaypointIndex == waypointCount) {
-            currentWaypointIndex = 0;
-        } else if (currentWaypointIndex == waypointCount + 1) {
-            currentWaypointIndex = 1;
-        } else if (currentWaypointIndex == waypointCount + 2) {
-            currentWaypointIndex = 2;
-        }
+            // special cases for out of bounds indexes
+            // using if statements cause apparently cant use switch with unconstant vars (sigh)
+            if (currentWaypointIndex == -3)
+            {
+                currentWaypointIndex = waypointCount - 3;
+            }
+            else if (currentWaypointIndex == -2)
+            {
+                currentWaypointIndex = waypointCount - 2;
+            }
+            else if (currentWaypointIndex == -1)
+            {
+                currentWaypointIndex = waypointCount - 1;
+            }
+            else if (currentWaypointIndex == waypointCount)
+            {
+                currentWaypointIndex = 0;
+            }
+            else if (currentWaypointIndex == waypointCount + 1)
+            {
+                currentWaypointIndex = 1;
+            }
+            else if (currentWaypointIndex == waypointCount + 2)
+            {
+                currentWaypointIndex = 2;
+            }
 
-        // also checking if index stayed the same
-        if (currentWaypointIndex == tempIndex) {
-            StartCoroutine("WaypointReached");
-        } else {
-            // move to next waypoint
-            navAgent.SetDestination(waypoints[currentWaypointIndex].position);
-
-            // play walk aimation
-            animator.Play("Walking_A 0");
+            // also checking if index stayed the same
+            if (currentWaypointIndex == tempIndex)
+            {
+                StartCoroutine("WaypointReached");
+            }
+            else
+            {
+                // move to next waypoint
+                currentWaypoint = waypoints[currentWaypointIndex].gameObject;
+                navAgent.SetDestination(waypoints[currentWaypointIndex].position);
+                navAgent.speed = walkSpeed;
+                // play walk aimation
+                animator.Play("Walking_A 0");
+            }
         }
     }
-    IEnumerator Timer() {
+    IEnumerator Timer()
+    {
         timing = true;
         vignette.SetActive(true);
         yield return new WaitForSeconds(wait);
         vignette.SetActive(false);
         yield return new WaitForSeconds(wait);
         timing = false;
-
+    }
+    
+    // check if walking past waypoint
+    public bool CheckWaypoint(GameObject waypoint)
+    {
+        return waypoint == currentWaypoint;
     }
 }

@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     float verticalRotation = 0f;
     CharacterController controller;
     public EnemyMovement enemy;
+    public Sound soundScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -135,6 +136,10 @@ public class PlayerMovement : MonoBehaviour
         lastHidObject = object_reference;
 
         is_hiding = true;
+
+        // hide sound script (so that enemy won't try to chase you even if you're hiding)
+        soundScript.enabled = false;
+
         controller.enabled = false;
         
         // apply rotation
@@ -156,6 +161,10 @@ public class PlayerMovement : MonoBehaviour
         lastHidObject.GetComponent<PropHide>().StartTimer();
 
         is_hiding = false;
+
+        // enable sound script
+        soundScript.enabled = true;
+
         controller.enabled = true;
     }
 
