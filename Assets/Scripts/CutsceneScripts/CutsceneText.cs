@@ -81,7 +81,7 @@ public class CutsceneText : MonoBehaviour
 
     public void FinishCutscene()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("IntroLevel");
         
     }
 
