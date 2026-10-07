@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class hudScript : MonoBehaviour
+public class pauseScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Volume globalVolume;
@@ -34,12 +34,14 @@ public class hudScript : MonoBehaviour
         {
             gameplayCanvas.gameObject.SetActive(false);
         }
+
+        LockCursor();
     }
 
     void Update()
     {
         // Detect when the user presses the Tab key
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleHUD();
             Debug.Log("HUD toggled. Current pause state: " + isPaused);
@@ -64,10 +66,32 @@ public class hudScript : MonoBehaviour
         }
         if (gameplayCanvas != null)
         {
-            gameplayCanvas.gameObject.SetActive(isPaused);
+            gameplayCanvas.gameObject.SetActive(!isPaused);
+        }
+
+        if (!isPaused)
+        {
+            LockCursor();
+        }
+        else
+        {
+            UnlockCursor();
         }
 
         // Optional: Freeze time when paused, unfreeze when playing
         Time.timeScale = isPaused ? 0f : 1f;
+    }
+
+    void LockCursor(){
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    void UnlockCursor(){
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+    public void OnPlayPressed(){
+        ToggleHUD();
     }
 }
