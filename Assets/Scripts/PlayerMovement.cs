@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         mouseSensitivity = sensitivity.mouse_sensitivity;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     
     // Update is called once per frame
