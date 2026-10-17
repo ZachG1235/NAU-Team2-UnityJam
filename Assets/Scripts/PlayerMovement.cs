@@ -21,6 +21,18 @@ public class PlayerMovement : MonoBehaviour
     public float standing_camera_height = 0.6f;
     public float crouched_camera_height = 0.3f;
 
+    [Header("Camera Bob")]
+    public bool enableBob = true;
+    public float bobFrequency = 8f;            // how fast the bob cycles at walking speed
+    public float bobAmplitude = 0.03f;         // vertical bob distance
+    public float bobHorizontalAmplitude = 0.02f; // side-to-side sway
+    public float bobSmoothing = 10f;           // how quickly the bob fades in/out
+
+    private float bobTimer;
+    private Vector3 bobOffset;
+    private float currentCameraHeight;
+    private Vector3 cameraBasePosition;
+
     [Header("Hiding Vars")]
     private Vector3 previous_location;
     private Quaternion previous_rotation;
@@ -38,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         mouseSensitivity = sensitivity.mouse_sensitivity;
         Cursor.lockState = CursorLockMode.Locked;
+
+        // set camera base position and current height
+        cameraBasePosition = playerCamera.localPosition;
+        currentCameraHeight = cameraBasePosition.y;
     }
     
     // Update is called once per frame
@@ -114,17 +130,39 @@ public class PlayerMovement : MonoBehaviour
 
     void TransitionCamera()
     {
-        if (is_crouching && (playerCamera.transform.localPosition.y > crouched_camera_height))
-        {
-            // move camera to crouched y position
+        // crouch / stand height
+        float targetHeight = is_crouching ? crouched_camera_height : standing_camera_height;
+        currentCameraHeight = Mathf.MoveTowards(currentCameraHeight, targetHeight, camera_change_rate * Time.deltaTime);
 
-            playerCamera.transform.localPosition += Vector3.down * camera_change_rate * Time.deltaTime;
-        }
-        else if (!is_crouching && (playerCamera.transform.localPosition.y < standing_camera_height))
+        // head bob
+        Vector3 targetBob = Vector3.zero;
+
+        if (enableBob && !is_hiding && controller.enabled && controller.isGrounded)
         {
-            // move camera to standing y position
-            playerCamera.transform.localPosition += Vector3.up * camera_change_rate * Time.deltaTime;
+            Vector3 flatVelocity = new Vector3(controller.velocity.x, 0f, controller.velocity.z);
+            float currentSpeed = flatVelocity.magnitude;
+
+            if (currentSpeed > 0.1f)
+            {
+                // bob faster when sprinting, slower when crouching
+                bobTimer += Time.deltaTime * bobFrequency * (currentSpeed / speed);
+
+                targetBob = new Vector3(
+                    Mathf.Cos(bobTimer) * bobHorizontalAmplitude,
+                    Mathf.Sin(bobTimer * 2f) * bobAmplitude,
+                    0f
+                );
+            }
         }
+
+        // smooth back to zero when standing still
+        bobOffset = Vector3.Lerp(bobOffset, targetBob, bobSmoothing * Time.deltaTime);
+
+        playerCamera.localPosition = new Vector3(
+            cameraBasePosition.x + bobOffset.x,
+            currentCameraHeight + bobOffset.y,
+            cameraBasePosition.z
+        );
     }
 
     public void Hide(Vector3 teleport_position, Vector3 rotation, GameObject object_reference)
