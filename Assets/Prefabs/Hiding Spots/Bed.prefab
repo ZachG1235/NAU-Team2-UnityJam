@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4656167642102954565}
   - component: {fileID: 5380994791603983131}
   - component: {fileID: 7081835640304288141}
-  - component: {fileID: -6310780064880347923}
+  - component: {fileID: 6226530486009125294}
+  - component: {fileID: 6096934085612228275}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -180,7 +181,23 @@ MonoBehaviour:
   touching_player: 0
   tub_depth: 0.35
   y_rotation: 0
---- !u!114 &-6310780064880347923
+--- !u!208 &6226530486009125294
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278866010368829331}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.80700004, y: 0.59900004, z: 1.064}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.004, y: 0.596, z: -0.162}
+  m_TimeToStationary: 0.5
+--- !u!114 &6096934085612228275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,9 +206,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7278866010368829331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8169b5308ab96e4da3cddcc57b04b2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b4c6a5407c0b3c478da9a6aa544b2e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HoverObject
-  touching_player: 0
-  mouseEnter: 0
-  player: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Highlightable
+  mode: 2
+  highlightColor: {r: 1, g: 0.9, b: 0.3, a: 1}
+  tintStrength: 0.5
+  overlayMaterial: {fileID: 2100000, guid: f60a392068f90d3419196f60af011964, type: 2}
+  outlineScale: 1.02
