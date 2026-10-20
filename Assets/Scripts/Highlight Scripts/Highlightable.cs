@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Put this on any object the player can interact with.
@@ -13,6 +14,8 @@ public class Highlightable : MonoBehaviour
         OverlayMaterial, // Adds an extra material on top (needs a custom outline shader)
         ScaledCopy       // Outline made from a slightly bigger copy of the mesh (no custom shader needed)
     }
+
+    public TMP_Text hoverText;
 
     [SerializeField] private Mode mode = Mode.ScaledCopy;
 
@@ -107,6 +110,10 @@ public class Highlightable : MonoBehaviour
         if (highlighted == IsHighlighted) return;
         IsHighlighted = highlighted;
 
+        // Show text when highlighted, hide it when not
+        if (hoverText != null)
+            hoverText.gameObject.SetActive(highlighted);
+
         switch (mode)
         {
             case Mode.Tint: ApplyTint(highlighted); break;
@@ -117,6 +124,7 @@ public class Highlightable : MonoBehaviour
 
     private void ApplyScaledCopy(bool on)
     {
+
         foreach (GameObject copy in outlineCopies)
             if (copy != null) copy.SetActive(on);
     }
