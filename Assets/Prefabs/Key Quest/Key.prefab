@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5715217499689352644}
   - component: {fileID: 4161540146815641779}
   - component: {fileID: 1946017515570930777}
+  - component: {fileID: 1082533989329932199}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -53,16 +54,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   touching_player: 0
-  timer: 0
-  timeStart: 0
+  timer: 4
   player: {fileID: 7659285534188447850, guid: c32ad136727772247af6c82cb3226d8f, type: 3}
   newModel: {fileID: 0}
   hold: {fileID: 0}
   teleportAway: {fileID: 0}
   curInterecting: 0
   playerMovement: {fileID: 0}
-  canvas: {fileID: 0}
+  textBox: {fileID: 0}
   countKey: {fileID: 0}
+  text: {fileID: 0}
+  words: It's a phone! Oh look Alex just texted it. "He won't leave me alone, it's
+    been 2 years idk what to do..." What could this mean?
+  targetParent: {fileID: 0}
+  minToDestroy: 15
+  maxToDestroy: 30
+  playerCamera: {fileID: 0}
+  hoverDistance: 4
 --- !u!54 &5715217499689352644
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -109,8 +117,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Height: 1
+  m_Radius: 0.5
+  m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: -0.3, z: 0}
 --- !u!222 &1946017515570930777
@@ -121,6 +129,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2407484254308147392}
   m_CullTransparentMesh: 1
+--- !u!114 &1082533989329932199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407484254308147392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4c6a5407c0b3c478da9a6aa544b2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Highlightable
+  hoverText: {fileID: 0}
+  mode: 0
+  hoverString: Press 'E' to pick up
+  highlightColor: {r: 1, g: 0.995283, b: 0.995283, a: 1}
+  tintStrength: 0.888
+  overlayMaterial: {fileID: 0}
+  outlineScale: 1.05
 --- !u!1001 &6840240814755778064
 PrefabInstance:
   m_ObjectHideFlags: 0
