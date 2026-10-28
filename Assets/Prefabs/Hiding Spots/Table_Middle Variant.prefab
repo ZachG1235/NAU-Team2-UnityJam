@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3869d10c2d919e458bad8e12f6ab8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PropHide
-  touching_player: 0
+  hideDistance: 3.5
   tub_depth: 0.3
   y_rotation: 0
 --- !u!136 &7226942390454573897
@@ -161,7 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4c6a5407c0b3c478da9a6aa544b2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Highlightable
+  hoverText: {fileID: 0}
   mode: 2
+  hoverString: Press 'E' to hide
   highlightColor: {r: 1, g: 0.9, b: 0.3, a: 1}
   tintStrength: 0.5
   overlayMaterial: {fileID: 2100000, guid: f60a392068f90d3419196f60af011964, type: 2}

@@ -11,22 +11,22 @@ PrefabInstance:
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5543327
+      value: 8.991079
       objectReference: {fileID: 0}
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16249
+      value: -0.16259013
       objectReference: {fileID: 0}
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.540001
+      value: -0.11248016
       objectReference: {fileID: 0}
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.38268343
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 272093708370894450, guid: cbd84e147ff3fd842a3a639c83017426,
         type: 3}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3869d10c2d919e458bad8e12f6ab8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PropHide
-  touching_player: 0
+  hideDistance: 3.5
   tub_depth: 0.35
   y_rotation: 0
 --- !u!114 &1456274113713233471
@@ -140,7 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4c6a5407c0b3c478da9a6aa544b2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Highlightable
+  hoverText: {fileID: 0}
   mode: 2
+  hoverString: Press 'E' to hide
   highlightColor: {r: 1, g: 0.9, b: 0.3, a: 1}
   tintStrength: 0.5
   overlayMaterial: {fileID: 2100000, guid: f60a392068f90d3419196f60af011964, type: 2}

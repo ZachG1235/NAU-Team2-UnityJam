@@ -19,6 +19,8 @@ public class Highlightable : MonoBehaviour
 
     [SerializeField] private Mode mode = Mode.ScaledCopy;
 
+    [SerializeField, TextArea] private string hoverString = "Hide";
+
     [Header("Tint mode")]
     [SerializeField] private Color highlightColor = new Color(1f, 0.9f, 0.3f);
     [SerializeField, Range(0f, 1f)] private float tintStrength = 0.5f;
@@ -30,6 +32,8 @@ public class Highlightable : MonoBehaviour
     [Header("Scaled Copy mode")]
     [Tooltip("How much bigger the outline copy is. 1.05 = 5% bigger.")]
     [SerializeField] private float outlineScale = 1.05f;
+
+    
 
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor"); // URP / HDRP
     private static readonly int ColorId = Shader.PropertyToID("_Color");         // Built-in pipeline
@@ -112,7 +116,10 @@ public class Highlightable : MonoBehaviour
 
         // Show text when highlighted, hide it when not
         if (hoverText != null)
+        {
+            if (highlighted) hoverText.text = hoverString;
             hoverText.gameObject.SetActive(highlighted);
+        }
 
         switch (mode)
         {
