@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class pauseScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Volume globalVolume;
     [SerializeField] private Canvas hud;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject optionsMenu;
     [SerializeField] private Canvas gameplayCanvas;
 
     private DepthOfField depthOfField;
     private bool isPaused = false;
+    private bool isOnOptionsMenu = false;
 
     void Start()
     {
@@ -32,9 +36,9 @@ public class pauseScript : MonoBehaviour
         }
         if (gameplayCanvas != null)
         {
-            gameplayCanvas.gameObject.SetActive(false);
+            gameplayCanvas.gameObject.SetActive(true);
         }
-
+        Time.timeScale = 1f;
         LockCursor();
     }
 
@@ -82,6 +86,20 @@ public class pauseScript : MonoBehaviour
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
+    public void ToggleOptionsMenu()
+    {
+        isOnOptionsMenu = !isOnOptionsMenu;
+        // Toggle the UI Canvas visibility using gameobject activation
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(!isOnOptionsMenu);
+        }
+        if (optionsMenu != null)
+        {
+            optionsMenu.SetActive(isOnOptionsMenu);
+        }
+    }
+
     void LockCursor(){
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -93,5 +111,15 @@ public class pauseScript : MonoBehaviour
 
     public void OnPlayPressed(){
         ToggleHUD();
+    }
+
+    public void OnRestartLvlPressed(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+    }
+
+    public void OnQuitPressed(){
+        SceneManager.LoadScene("TitleScreeen");
+        
     }
 }
