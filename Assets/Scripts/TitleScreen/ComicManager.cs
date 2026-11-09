@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ComicManager : MonoBehaviour
@@ -22,12 +23,13 @@ public class ComicManager : MonoBehaviour
 
     [Header("Refrences")]
     [SerializeField] private Camera cam;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSourceSFX;
+    [SerializeField] private AudioSource audioSourceMusic;
+    [SerializeField] private float fadeOutTime = 3f;
+    [SerializeField] private CanvasGroup fadePanel;
+
 
     // Cam is short for Camera for those new to the stream
-    [Header("Cam Start")]
-    [SerializeField] private Vector2 startPosition = new Vector2(-6.6f, 14.3f);
-    [SerializeField] private float startSize = 3.5f;
 
     [Header("Sequence")]
     [SerializeField] private CameraStep[] steps = IntroSteps();
@@ -35,7 +37,7 @@ public class ComicManager : MonoBehaviour
     private void Reset()
     {
         cam = Camera.main;
-        audioSource = GetComponent<AudioSource>();
+        audioSourceSFX = GetComponent<AudioSource>();
         steps = IntroSteps();
     }
 
@@ -45,11 +47,6 @@ public class ComicManager : MonoBehaviour
     private void Start()
     {
         if (cam == null) cam = Camera.main;
-
-        cam.transform.position = new Vector3(startPosition.x, startPosition.y, cam.transform.position.z);
-        cam.orthographicSize = startSize;
-
-        Play();
     }
 
     public void Play()
@@ -64,6 +61,28 @@ public class ComicManager : MonoBehaviour
         {
             yield return RunStep(step);
         }
+
+        yield return FadeOut();
+
+        // Everything is Done! Load game!
+        SceneManager.LoadScene("IntroLevel");
+    }
+
+    private IEnumerator FadeOut()
+    {
+        if (audioSourceMusic == null || fadeOutTime <= 0f || fadePanel == null) yield break;
+
+        float startVolume = audioSourceMusic.volume;
+        float t = 0f;
+        while (t < fadeOutTime)
+        {
+            t += Time.deltaTime;
+            float konstant = t / fadeOutTime;
+            audioSourceMusic.volume = Mathf.Lerp(startVolume, 0f, konstant);
+            fadePanel.alpha = konstant;
+            yield return null;
+        }
+        audioSourceMusic.volume = 0f;
     }
 
     private IEnumerator RunStep(CameraStep step)
@@ -90,8 +109,8 @@ public class ComicManager : MonoBehaviour
             cam.orthographicSize = endSize;
         }
 
-        if (step.sfx != null && audioSource != null)
-            audioSource.PlayOneShot(step.sfx);
+        if (step.sfx != null && audioSourceSFX != null)
+            audioSourceSFX.PlayOneShot(step.sfx);
 
         if (step.WaitDuration > 0f)
             yield return new WaitForSeconds(step.WaitDuration);
@@ -102,26 +121,38 @@ public class ComicManager : MonoBehaviour
     {
         return new CameraStep[]
         {
+            new CameraStep {x = -6.6f, y = 14.3f, size = 3.5f,
+                    LerpDuration = 1.5f, WaitDuration = 1f},
+
             new CameraStep {x = -6.6f, y = 10.8f, size = 3.5f,
-                    LerpDuration = 2f, WaitDuration = 0f},
+                    LerpDuration = 2f, WaitDuration = 1f},
 
             new CameraStep {x = 4.8f, y = 13.1f, size = 4f,
-                    LerpDuration = 0.5f, WaitDuration = 1.5f},
+                    LerpDuration = 0.5f, WaitDuration = 2.5f},
 
             new CameraStep {x = 6.7f, y = 2.4f, size = 3.5f,
                     LerpDuration = 0.5f, WaitDuration = 0f},
 
             new CameraStep {x = 6.7f, y = -1.8f, size = 3.5f,
-                    LerpDuration = 1.5f, WaitDuration = 0f},
+                    LerpDuration = 1.5f, WaitDuration = 1f},
 
             new CameraStep {x = -5.2f, y = .6f, size = 4.5f,
-                    LerpDuration = 0.5f, WaitDuration = 1.5f},
+                    LerpDuration = 0.5f, WaitDuration = 2.5f},
 
             new CameraStep {x = -4.8f, y = -10f, size = 4f,
                     LerpDuration = 0.5f, WaitDuration = 0f},
 
             new CameraStep {x = -4.8f, y = -14f, size = 4f,
-                    LerpDuration = 1.5f, WaitDuration = 0f},
+                    LerpDuration = 1.5f, WaitDuration = 1f},
+
+            new CameraStep {x = 7f, y = -9f, size = 3.5f,
+                    LerpDuration = 0.5f, WaitDuration = 1f},
+                    
+            new CameraStep {x = 7f, y = -14.1f, size = 3.5f,
+                    LerpDuration = 1.5f, WaitDuration = 1f},
+            
+            new CameraStep {x = 7f, y = -12.1f, size = 1.8f,
+                    LerpDuration = 1f, WaitDuration = 0f},
         };
     }
 }

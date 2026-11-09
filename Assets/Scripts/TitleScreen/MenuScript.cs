@@ -3,12 +3,18 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class MenuScriipt : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     public Slider slider;
 
     [SerializeField]
     private Text sensText;
+
+    [Header("Scene Refrences")]
+    [SerializeField] private GameObject floatCam;
+    [SerializeField] private ComicManager comicManager;
+    [SerializeField] private GameObject UICanvas;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,9 +31,10 @@ public class MenuScriipt : MonoBehaviour
 
     public void Play()
     {
-        print("play");
-        //go to the correct scene
-        SceneManager.LoadScene("IntroCutscene");
+        // Changed for new cutscene
+        if (floatCam != null) floatCam.SetActive(false);
+        if (UICanvas != null) UICanvas.SetActive(false);
+        if (comicManager != null) comicManager.Play();
     }
 
     public void Quit()
@@ -37,7 +44,7 @@ public class MenuScriipt : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("TitleScreeen");
+        SceneManager.LoadScene("NewTitleScreen");
     }
 
     public void OnSliderValueChanged(float newValue)
