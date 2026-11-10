@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class MenuScriipt : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     public Slider slider;
 
@@ -32,7 +32,11 @@ public class MenuScriipt : MonoBehaviour
 
     public void Quit()
     {
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 
     public void MainMenu()

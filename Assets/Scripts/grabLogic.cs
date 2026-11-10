@@ -92,7 +92,8 @@ public class grabLogic : MonoBehaviour
         DeAlienify();
     }
 
-    IEnumerator ItemAppear() {
+    IEnumerator ItemAppear()
+    {
         transform.position = teleportAway.transform.position;
 
         newModel.transform.position = hold.transform.position;
@@ -100,11 +101,16 @@ public class grabLogic : MonoBehaviour
         playerMovement.enabled = false;
         textBox.SetActive(true);
         text.text = words;
-        
-        Vector3 targetPosition = new Vector3(hold.transform.position.x, hold.transform.position.y, hold.transform.position.z);
+
         newModel.transform.LookAt(player.transform);
         countKey.deleteKey();
-        yield return new WaitForSeconds(timer);
+
+        Time.timeScale = 0f; // pause the game
+
+        yield return new WaitForSecondsRealtime(timer); // real time, ignores timeScale
+
+        Time.timeScale = 1f; // resume
+
         playerMovement.enabled = true;
         newModel.transform.position = teleportAway.transform.position;
         curInterecting = false;

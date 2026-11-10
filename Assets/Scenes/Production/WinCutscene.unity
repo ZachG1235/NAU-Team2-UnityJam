@@ -203,7 +203,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1389226223}
-        m_TargetAssemblyTypeName: MenuScriipt, Assembly-CSharp
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -213,7 +213,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &108267428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,6 +1148,9 @@ MonoBehaviour:
   ending_seconds_wait_time: 5
   lvl: 0
   text_bloop_sfx: {fileID: 929362233}
+  introText: 
+  introTextBox: {fileID: 0}
+  isTyping: 0
 --- !u!82 &929362233
 AudioSource:
   m_ObjectHideFlags: 0
