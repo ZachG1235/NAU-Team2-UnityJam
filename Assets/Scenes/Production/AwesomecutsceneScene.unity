@@ -402,6 +402,9 @@ MonoBehaviour:
   ending_seconds_wait_time: 5
   lvl: 0
   text_bloop_sfx: {fileID: 478378456}
+  introText: 
+  introTextBox: {fileID: 0}
+  isTyping: 0
 --- !u!82 &478378456
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1686,9 +1689,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2023771956}
-        m_TargetAssemblyTypeName: MenuScriipt, Assembly-CSharp
-        m_MethodName: MainMenu
+      - m_Target: {fileID: 2023771958}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2048,7 +2051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2023771957}
-  - component: {fileID: 2023771956}
+  - component: {fileID: 2023771958}
   m_Layer: 0
   m_Name: Buttonmanager
   m_TagString: Untagged
@@ -2056,20 +2059,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2023771956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023771955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 259425870af3ce643b6547e7a813d073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuScriipt
-  slider: {fileID: 0}
-  sensText: {fileID: 0}
 --- !u!4 &2023771957
 Transform:
   m_ObjectHideFlags: 0
@@ -2085,6 +2074,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023771958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023771955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eef2a41b0db4114ba371e16ec388d66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuScript
+  slider: {fileID: 0}
+  sensText: {fileID: 0}
+  floatCam: {fileID: 0}
+  comicManager: {fileID: 0}
+  UICanvas: {fileID: 0}
 --- !u!1001 &4910683008535687242
 PrefabInstance:
   m_ObjectHideFlags: 0
