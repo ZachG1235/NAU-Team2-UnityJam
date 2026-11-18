@@ -119,7 +119,7 @@ public class pauseScript : MonoBehaviour
     }
 
     public void OnQuitPressed(){
-        SceneManager.LoadScene("TitleScreeen");
+        SceneManager.LoadScene("NewTitleScreen");
         
     }
 }
