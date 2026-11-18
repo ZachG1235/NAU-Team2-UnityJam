@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     public Slider slider;
+    [SerializeField] private GameObject optionMenu;
 
     [SerializeField]
     private Text sensText;
@@ -15,12 +16,15 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private ComicManager comicManager;
     [SerializeField] private GameObject UICanvas;
 
+    private bool isOptionsOpened;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if(slider != null){
             slider.onValueChanged.AddListener(OnSliderValueChanged);
         }
+        isOptionsOpened = false;
     }
 
     // Update is called once per frame
@@ -56,5 +60,14 @@ public class MenuScript : MonoBehaviour
         Debug.Log("Slider value changed to: " + newValue);
         sensText.text = newValue.ToString();
         sensitivity.mouse_sensitivity = newValue;
+    }
+
+    public void OnOptionsPressed(){
+        isOptionsOpened = !isOptionsOpened;
+        // Toggle the UI Canvas visibility using gameobject activation
+        if (optionMenu != null)
+        {
+            optionMenu.SetActive(isOptionsOpened);
+        }
     }
 }
