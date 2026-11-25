@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion previous_rotation;
     private float unhide_cooldown = 1f;
     private GameObject lastHidObject;
+
+    [Header("UI")]
+    public Image footsteps;
 
 
     float verticalRotation = 0f;
@@ -96,10 +100,15 @@ public class PlayerMovement : MonoBehaviour
         if (is_running)
         {
             move_multiplier = sprint_multiplier;
+            footsteps.enabled = true;
         }
         else if (is_crouching)
         {
             move_multiplier = crouch_multiplier;
+        }
+
+        if (!is_running){
+            footsteps.enabled = false;
         }
 
         controller.SimpleMove(move * (speed*move_multiplier));
